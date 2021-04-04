@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - uses: borales/actions-yarn@v2.0.0
-      #   with:
-      #     cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # will run `yarn install` command
 
       - run: mkdir src/config
       - run: echo -e ${{ secrets.FIREBASE_CONF }} > src/config/firebaseconf.json
       - run: cat src/config/firebaseconf.json
       
-      # - uses: borales/actions-yarn@v2.0.0
-      #   with:
-      #     cmd: build # will run `yarn build` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build # will run `yarn build` command
       # - uses: borales/actions-yarn@v2.0.0
       #   with:
       #     cmd: test # will run `yarn test` command
