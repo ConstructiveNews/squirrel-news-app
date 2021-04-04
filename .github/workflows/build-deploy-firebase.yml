@@ -16,6 +16,7 @@ jobs:
 
       - run: mkdir src/config
       - run: echo ${{ secrets.FIREBASE_CONF }} > src/config/firebaseconf.json
+      - run: cat src/config/firebaseconf.json
       
       - uses: borales/actions-yarn@v2.0.0
         with:
