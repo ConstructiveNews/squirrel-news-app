@@ -50,6 +50,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
   var div: any = null;
   var numPages = 0;
 
+  // eslint-disable-next-line
   function setPaginator(currentPage: number) {
 
     numPages = getNumberOfPages();
@@ -80,7 +81,8 @@ export const Scrollview: FC<Props> = ({ match }) => {
 
   useEffect(() => {
     setPaginator(currentPage);
-  }, [setPaginator, currentPage, issue])
+    // eslint-disable-next-line
+  }, [currentPage, issue])
 
   useEffect(() => {
     getIssue(Number(match.params.id + 1), LANGUAGES.EN, (data) => {
@@ -96,9 +98,11 @@ export const Scrollview: FC<Props> = ({ match }) => {
       setScrollStart();
       setDonatePage();
     });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line
     div = ref.current;
     if (div) {
       div.addEventListener('scroll', getScrollPosition, true);
