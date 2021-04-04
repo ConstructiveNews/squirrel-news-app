@@ -13,6 +13,9 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install # will run `yarn install` command
+
+      - run: echo ${{ secrets.FIREBASE_CONF }} > src/config/firebaseconfig.ts
+      
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: build # will run `yarn build` command
