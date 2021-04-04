@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { config } from '../config/firebaseconf.json';
+import config from '../config/firebaseconf.json';
 
 import { Issue, Article, LANGUAGES } from '../models/index'
 
