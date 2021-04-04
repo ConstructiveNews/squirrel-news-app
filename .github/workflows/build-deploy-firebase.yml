@@ -15,7 +15,7 @@ jobs:
           cmd: install # will run `yarn install` command
 
       - run: mkdir src/config
-      - run: echo -e ${{ secrets.FIREBASE_CONF }} > src/config/firebaseconf.json
+      - run: echo -e '${{ secrets.FIREBASE_CONF }}' > src/config/firebaseconf.json
       - run: cat src/config/firebaseconf.json
       
       - uses: borales/actions-yarn@v2.0.0
