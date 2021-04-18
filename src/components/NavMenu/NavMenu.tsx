@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // SVG imports 
 import { ReactComponent as SqIconLogo } from '../../assets/icon/sn-logo.svg'; // Wrap the svg logo in a component container
 

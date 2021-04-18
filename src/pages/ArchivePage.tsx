@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState  } from 'react';
-import { Article, Issue, LANGUAGES } from '../models';
+import { LANGUAGES } from '../models';
 import { IssueTeaser } from '../widgets/IssueTeaser'
-import { getIssue , getArchive} from '../api/firebase';
+import { getArchive} from '../api/firebase';
 
 
 
