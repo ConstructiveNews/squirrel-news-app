@@ -1,10 +1,6 @@
-import React, { FC, useEffect, useState } from 'react';
-import {Plugins } from '@capacitor/core';
-import { getIssue } from '../api/firebase';
-import { Article, Donate, LANGUAGES, } from '../models';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-const {Browser} = Plugins; 
 
 interface Props{
     image: string;
@@ -18,7 +14,7 @@ interface Props{
 
 export const IssueTeaser: FC<Props> = ({image, headline, date, link, issueNum}) => {
     
-    const [issue, setIssue] = useState<{ donate: { title: string, text: string, url: string }, date: string, articles: Article[] }>({ donate: { title: "", text: "", url: "" }, date: "", articles: [] });
+    // const [issue, setIssue] = useState<{ donate: { title: string, text: string, url: string }, date: string, articles: Article[] }>({ donate: { title: "", text: "", url: "" }, date: "", articles: [] });
 
     return(
 

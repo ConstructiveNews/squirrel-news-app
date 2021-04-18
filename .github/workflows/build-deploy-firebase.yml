@@ -1,0 +1,42 @@
+name: CI
+on:
+  push:
+    branches:
+      - main # TODO: add when stable
+      - pipelines
+jobs:
+  build:
+    name: build webapp
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Install dependencies & build
+        run: |
+          npm ci
+          mkdir src/config
+          echo -e '${{ secrets.FIREBASE_CONF }}' > src/config/firebaseconf.json
+          cat src/config/firebaseconf.json
+          npm run build
+
+      - name: save build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifact
+          path: build/
+      # - uses: borales/actions-yarn@v2.0.0
+      #   with:
+      #     cmd: build # will run `yarn build` command
+      # - uses: borales/actions-yarn@v2.0.0
+      #   with:
+      #     cmd: test # will run `yarn test` command
