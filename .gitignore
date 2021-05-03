@@ -31,3 +31,4 @@ src/config/firebaseconf.json
 
 # special tailwind output
 src/tailwind.output.css
+src/config/firebaseconf.json

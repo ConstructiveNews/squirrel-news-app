@@ -1,5 +1,6 @@
 import React, { CSSProperties } from "react";
 import {Plugins } from '@capacitor/core';
+import { FAB } from "../widgets/FAB";
 // set the width of the page to the width of the screen
 
 
@@ -54,7 +55,10 @@ export const ArticleTeaser: React.FC<Props> = ({article}) => {
     
     return(
         <div className="flex flex-col-reverse h-full snap-child" style={style} >
-
+            <div className="flex justify-center space-x-4">
+              <FAB icon="heart" onClick={ () => console.log('heart clicked')} />
+              <FAB icon="share" onClick={ () => console.log('share clicked')} />
+            </div>
 
             {/* Article information div */}
 

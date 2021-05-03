@@ -1,4 +1,5 @@
 export interface Issue {
+  issueId: string;
   headline: string;
   teaser: string;
   image: string;
@@ -44,7 +45,7 @@ export interface Donate {
 /**
  * Used to store information on device via issueId and articleId
  */
-interface StoredFav {
+export interface StoredFav {
   issueId: string;
   articleId: string;
 }

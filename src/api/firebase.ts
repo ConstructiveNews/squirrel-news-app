@@ -22,9 +22,10 @@ export function getIssue(atIndex: number, language: LANGUAGES, onResult: (data: 
     .orderBy('publishedAt', 'desc').limit(atIndex).onSnapshot(
       (issue) => {
         const result: Issue = issue.docChanges()[issue.docChanges().length - 1].doc.data() as Issue;
+        result.issueId = issue.docChanges()[issue.docChanges().length - 1].doc.id;
         
-        firestore.collection('issues').doc(issue.docChanges()[0].doc.id).collection('articles').onSnapshot(articles => {
-          result.articles = articles.docChanges().map(article => article.doc.data() as Article);
+        firestore.collection('issues').doc(result.issueId).collection('articles').onSnapshot(articles => {
+          result.articles = articles.docChanges().map(article => ({ ...article.doc.data(), articleId: article.doc.id  }) as Article);
           onResult(result);
         })
       }
