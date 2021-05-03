@@ -72,7 +72,7 @@ export const ArticleTeaser: React.FC<Props> = ({article}) => {
               </div>
               
               <div className="_date absolute ml-1 bottom-0 left-0 text-left text-white">{article.date}</div>
-              <div className="_image_credit absolute mr-1 bottom-0 right-0 text-right text-white">{article.image_credit}</div>
+              <div className="_image_credit absolute mr-1 text-right text-white">{article.image_credit}</div>
           
             </div>
 

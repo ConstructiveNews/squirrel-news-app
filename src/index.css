@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header_container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+._image_credit {
+  top: 50%;
+  right: 15px;
+  transform: translateX(50%) rotate(270deg);
+}
+._menu {
+  right: -91.666667%;
+  transition:right 0.3s ease-out;
+}
