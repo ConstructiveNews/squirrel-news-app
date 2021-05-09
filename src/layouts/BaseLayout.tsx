@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'; 
 import { NavBar } from '../components/NavBar/NavBar';
 import { Scrollview } from '../components/Scrollview/Scrollview'
@@ -6,13 +6,14 @@ import { AboutUsPage, DonationPage, ArchivePage, FavoritesPage, ImprintPage, Pri
 // const intervals = 2; 
 
 export const BaseLayout: FC = () => {
+
   return (
     <div>
 
 
       <Router>        
       {/* render toolbar and Burger Menu here */}
-      <NavBar/>
+      <NavBar />
         
         <Switch>
           

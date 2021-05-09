@@ -6,7 +6,7 @@ import { DonationPage } from '../../pages/DonationPage'
 import { RouteComponentProps } from 'react-router-dom';
 //import { IssuesPage } from '../../pages';
 import { IssueCoverPage } from '../../pages/IssueCoverPage';
-import { getDeviceLang } from '../../api/language';
+import { getStoredLang } from '../../api/language';
 
 // calculate window height based on the screen size, subtract the height of the nav bar (3 rem)
 // This places the scroll bar at the bottom of the page
@@ -87,7 +87,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
   useEffect( () => {
     
     const fetchIssue = async () => {
-      const lang = await getDeviceLang();
+      const lang = await getStoredLang();
       getIssue(Number(match.params.id + 1), lang, (data) => {
         setIssue(
           {
