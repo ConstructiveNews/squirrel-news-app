@@ -57,8 +57,8 @@ const LANGUAGE_VALUES: any = {
     },
     donate: {
       ownCase: 'in eigener Sache',
-      title: 'Würdest Du uns unterstützen?',
-      text: 'Squirrel News finanziert sich ausschließlich aus kleinen und mittleren Spenden. Dafür brauchen wir auch dich! Bitte unterstütze uns mit einem monatlichen oder jährlichen Betrag in Höhe deiner Wahl!'
+      title: 'Bitte unterstützt uns!',
+      text: 'Squirrel News finanziert sich hauptsächlich durch Spenden. Damit das klappt, brauchen wir euch alle! Bitte unterstützt uns jetzt mit einem regelmäßigen Betrag in der Höhe eurer Wahl!'
     }
   },
 
@@ -114,8 +114,8 @@ const LANGUAGE_VALUES: any = {
     },
     donate: {
       ownCase: 'in own case',
-      title: 'Would you support us?',
-      text: 'Squirrel News finanziert sich ausschließlich aus kleinen und mittleren Spenden. Dafür brauchen wir auch dich! Bitte unterstütze uns mit einem monatlichen oder jährlichen Betrag in Höhe deiner Wahl!'
+      title: 'Please support us!',
+      text: 'Squirrel News is a non-profit organisation and relies on donations. Please support us now to help us continue our work and keep Squirrel News running!'
     }
   }
 };
