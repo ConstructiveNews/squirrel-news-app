@@ -5,6 +5,7 @@ import { ReactComponent as SqIconLogo } from '../../assets/icon/sn-logo.svg'; //
 
 import { valFor, getStoredLang, storeLang } from '../../api/language';
 import { LANGUAGES } from "../../models";
+import { LanguageCtx } from "../../lang-context";
 
 interface Props{
     // Prop declariation in the interface
@@ -15,31 +16,21 @@ interface Props{
 const style: string = "_menu_item w-full h-16 text-2xl text-center align-bottom"
 
 export const NavMenu: React.FC<Props> = ({open}) => {
-  const history = useHistory();
-
-  const [lang, setLang] = useState<LANGUAGES>(LANGUAGES.EN);
   
-  const handleLanguageSwitch = () => {
-    if (lang === 'de') {
+  const handleLanguageSwitch = (current: LANGUAGES) => {
+    if (current === 'de') {
       storeLang(LANGUAGES.EN);
-      setLang(LANGUAGES.EN);
     } else {
       storeLang(LANGUAGES.DE);
-      setLang(LANGUAGES.DE);
     }
-    history.push('/');
+    window.location.href = "/"
   }
 
-  useEffect( () => {
-    const fetchLang = async () => {
-      
-      setLang(await getStoredLang());
-    };
-    fetchLang();
-  })
-
   return(
-      <div>
+      <LanguageCtx.Consumer>
+        { ( {language} ) => (
+
+          <div>
           {/* Nav-Menu */} 
           <div className={"_menu flex flex-col absolute h-screen w-11/12 bg-white shadow z-20" + (open ? " right-0" : "")}>
               <div className="_spacer w-full h-40">
@@ -49,48 +40,50 @@ export const NavMenu: React.FC<Props> = ({open}) => {
               <div className={style}>
                 <button 
                   className=" background-transparent px-3 py-1 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                  onClick={handleLanguageSwitch}
-                >
-                  { valFor(lang, 'lang.switch')}
+                  onClick={ () => handleLanguageSwitch(language) }
+                  >
+                  { valFor(language, 'lang.switch')}
                 </button>
               </div>
 
               <div className={style}>
                   <Link to="/archive">
-                    { valFor(lang, 'issues.all') }
+                    { valFor(language, 'issues.all') }
                   </Link>
               </div>
 
               <div className={style}>
                   <Link to="/favorites">
-                    { valFor(lang, 'issues.favorites') } 
+                    { valFor(language, 'issues.favorites') } 
                   </Link>
               </div>
 
               <div className={style}>
                   <Link to="/about">
-                    { valFor(lang, 'about.name') }
+                    { valFor(language, 'about.name') }
                   </Link>
               </div>
 
               <div className={style}>
                   <Link to="/donate">
-                    { valFor(lang, 'support.name') }
+                    { valFor(language, 'support.name') }
                   </Link>
               </div>
 
               <div className={style}>
                   <Link to="/imprint">
-                    { valFor(lang, 'imprint.name') }
+                    { valFor(language, 'imprint.name') }
                   </Link>
               </div>
 
               <div className={style}>
                   <Link to="/privacy">
-                    { valFor(lang, 'privacyPolicy.name') }
+                    { valFor(language, 'privacyPolicy.name') }
                   </Link>
               </div>
           </div>
       </div>
+      )}
+      </LanguageCtx.Consumer>
   )
 }

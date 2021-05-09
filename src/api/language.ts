@@ -140,7 +140,7 @@ export async function getStoredLang(): Promise<LANGUAGES> {
   return storedLang.value as LANGUAGES;
 }
 
-export async function storeLang(code: LANGUAGES): Promise<void> {
+export async function storeLang(code: LANGUAGES): Promise<any> {
   return Storage.set({ key: STORAGE_KEY, value: code})
 }
 

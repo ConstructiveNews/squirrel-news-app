@@ -9,12 +9,9 @@ export const BaseLayout: FC = () => {
 
   return (
     <div>
-
-
       <Router>        
       {/* render toolbar and Burger Menu here */}
-      <NavBar />
-        
+        <NavBar />    
         <Switch>
           
           {/* Home page redirects to latest issue */}
@@ -36,7 +33,7 @@ export const BaseLayout: FC = () => {
               id: 1000,
               headline: 'Support us!',
               body: 'Squirrel News is financed exclusively by small and medium-sized donations. By donating the cost of a cup of coffee (or two) each month, you’re helping us to continue our work and keep Squirrel News running ad-free!'
-             }}/>
+              }}/>
           </Route>
         
           <Route exact path="/favorites">
