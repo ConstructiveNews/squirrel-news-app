@@ -5,8 +5,6 @@ import { Scrollview } from '../components/Scrollview/Scrollview'
 import { AboutUsPage, DonationPage, ArchivePage, FavoritesPage, ImprintPage, PrivacyPolicyPage } from '../pages/index';
 // const intervals = 2; 
 
-
-
 export const BaseLayout: FC = () => {
   return (
     <div>
