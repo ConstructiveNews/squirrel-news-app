@@ -1,30 +1,25 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { getIssue } from './api/firebase';
 import { BaseLayout } from './layouts/BaseLayout';
 import { LANGUAGES } from './models';
 import { addFav, removeFav} from './api/favorites';
-
-import { Plugins } from '@capacitor/core';
-
-const { Device } = Plugins;
+import { LoadingScreen } from './components/SplashScreen';
 
 export const App: FC<{}> = () => {
+  
+  const [loading, setLoading] = useState(true)
+  
+  useEffect( () => {
 
-  // const [articles, setArticles] =  useState <any>();
-  
-  // getArticle("HVG0cAArZe6bMj4QJPag", "bvMDfEYH7xZ3iRv5YsXr", (result) => {
-  //   console.log('fav', result);
-  // });
-  
-  // getFavorites().then( (data) => console.log('favs', data))
-  
-  console.log('lang', Device.getLanguageCode())
-  
+    setTimeout(() => setLoading(false), 5000);
+
+  })
 
   return (
     <div>
-      {/* <FAB></FAB> */}
-      <BaseLayout />
+      { loading ? <LoadingScreen />
+                : null }
+      <BaseLayout /> 
     </div>  
   );
 }
