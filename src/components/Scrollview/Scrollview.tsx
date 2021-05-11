@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, useEffect, useState } from 'react';
+import React, { CSSProperties, FC, useContext, useEffect, useState } from 'react';
 import { ArticleTeaser } from '../../pages/ArticleTeaser'
 import { getIssue } from '../../api/firebase';
 import { Article } from '../../models';
@@ -7,6 +7,7 @@ import { RouteComponentProps } from 'react-router-dom';
 //import { IssuesPage } from '../../pages';
 import { IssueCoverPage } from '../../pages/IssueCoverPage';
 import { getStoredLang } from '../../api/language';
+import { AppContext } from '../../contexts';
 
 // calculate window height based on the screen size, subtract the height of the nav bar (3 rem)
 // This places the scroll bar at the bottom of the page
@@ -23,6 +24,8 @@ function convertRemToPixels(rem: number) {
 interface Props extends RouteComponentProps<{ id: string }> { }
 
 export const Scrollview: FC<Props> = ({ match }) => {
+
+  const ctx = useContext(AppContext);
 
   const [paginator, refreshPaginator] = useState<any>();
   const [issue, setIssue] = useState<
@@ -100,6 +103,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
           });
         setScrollStart();
         setDonatePage();
+        ctx.setLoading(false);
       });
       // eslint-disable-next-line
     }
@@ -190,11 +194,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
           }} />
         )}
 
-        <DonationPage info={{
-          id: 1000,
-          headline: issue.donate.title,
-          body: issue.donate.text
-        }} />
+        <DonationPage />
 
 
       </div>
