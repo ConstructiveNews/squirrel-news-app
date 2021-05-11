@@ -18,7 +18,6 @@ const style: string = "_menu_item w-full h-16 text-2xl text-center align-bottom"
 export const NavMenu: React.FC<Props> = ({open}) => {
   
   const handleLanguageSwitch = (current: LANGUAGES) => {
-
     if (current === 'de') {
       storeLang(LANGUAGES.EN);
     } else {
@@ -29,7 +28,7 @@ export const NavMenu: React.FC<Props> = ({open}) => {
 
   return(
       <AppContext.Consumer>
-        { ( {language, setLoading} ) => (
+        { ( {language} ) => (
 
           <div>
           {/* Nav-Menu */} 

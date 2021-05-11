@@ -1,8 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
-import { getIssue } from './api/firebase';
 import { BaseLayout } from './layouts/BaseLayout';
 import { LANGUAGES } from './models';
-import { addFav, removeFav} from './api/favorites';
 import { SplashScreen } from './components/SplashScreen';
 import { getStoredLang, storeLang } from './api/language';
 import { AppContext } from './contexts';
