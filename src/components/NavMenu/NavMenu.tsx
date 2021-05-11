@@ -5,7 +5,7 @@ import { ReactComponent as SqIconLogo } from '../../assets/icon/sn-logo.svg'; //
 
 import { valFor, getStoredLang, storeLang } from '../../api/language';
 import { LANGUAGES } from "../../models";
-import { LanguageCtx } from "../../lang-context";
+import { AppContext } from "../../contexts";
 
 interface Props{
     // Prop declariation in the interface
@@ -27,7 +27,7 @@ export const NavMenu: React.FC<Props> = ({open}) => {
   }
 
   return(
-      <LanguageCtx.Consumer>
+      <AppContext.Consumer>
         { ( {language} ) => (
 
           <div>
@@ -40,7 +40,7 @@ export const NavMenu: React.FC<Props> = ({open}) => {
               <div className={style}>
                 <button 
                   className=" background-transparent px-3 py-1 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                  onClick={ () => handleLanguageSwitch(language) }
+                  onClick={ () => { handleLanguageSwitch(language)} }
                   >
                   { valFor(language, 'lang.switch')}
                 </button>
@@ -84,6 +84,6 @@ export const NavMenu: React.FC<Props> = ({open}) => {
           </div>
       </div>
       )}
-      </LanguageCtx.Consumer>
+      </AppContext.Consumer>
   )
 }

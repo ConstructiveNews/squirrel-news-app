@@ -1,34 +1,31 @@
 import React, { FC, useEffect, useState } from 'react';
-import { getIssue } from './api/firebase';
 import { BaseLayout } from './layouts/BaseLayout';
 import { LANGUAGES } from './models';
-import { addFav, removeFav} from './api/favorites';
-import { LoadingScreen } from './components/SplashScreen';
+import { SplashScreen } from './components/SplashScreen';
 import { getStoredLang, storeLang } from './api/language';
-import { LanguageCtx } from './lang-context';
+import { AppContext } from './contexts';
 
 export const App: FC<{}> = () => {
   
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [lang, setLang] = useState(LANGUAGES.EN);
 
   useEffect( () => {
       const fetchLang = async () => { 
         setLang(await getStoredLang());
+        
       };
       fetchLang();
-    // setTimeout(() => setLoading(false), 5000);
   })
 
   return (
-    <LanguageCtx.Provider value={ { language: lang }}>
-
+    <AppContext.Provider value={ { language: lang, setLoading: setLoading }}>
     <div>
-      { loading ? <LoadingScreen />
+      { loading ? <SplashScreen />
                 : null }
       <BaseLayout /> 
     </div>  
-    </LanguageCtx.Provider>
+    </AppContext.Provider>
   );
 }
 

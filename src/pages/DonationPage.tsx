@@ -2,7 +2,7 @@ import React, { CSSProperties } from "react";
 import {Plugins } from '@capacitor/core';
 import logo from '../assets/squirrel-donate.jpg';
 import { valFor } from '../api/language';
-import { LanguageCtx } from "../lang-context";
+import { AppContext } from "../contexts";
 
 
 // set the width of the page to the width of the screen
@@ -12,25 +12,14 @@ var style: CSSProperties = {
   }
 const {Browser} = Plugins; 
 
-interface DonationInfo{ 
-    id: number;
-    headline: string; 
-    body: string;
-}
-
-interface Props{
-info: DonationInfo
-}
-
-
-export const DonationPage: React.FC<Props> = () => {
+export const DonationPage: React.FC = () => {
 
      async function openBrowser(url: string){
         await Browser.open({url});
     }
     
     return(
-        <LanguageCtx.Consumer>
+        <AppContext.Consumer>
           { ({language}) => (
             <div className="flex flex-col h-full w-screen snap-child" style={style}>
               {/* <div className="relative"> */}
@@ -42,7 +31,7 @@ export const DonationPage: React.FC<Props> = () => {
               {/* </div> */}
           </div>
           )}
-        </LanguageCtx.Consumer>
+        </AppContext.Consumer>
     );
 
 }
