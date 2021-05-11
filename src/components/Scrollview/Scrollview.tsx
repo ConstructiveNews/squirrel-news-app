@@ -1,12 +1,12 @@
 import React, { CSSProperties, FC, useEffect, useState } from 'react';
 import { ArticleTeaser } from '../../pages/ArticleTeaser'
 import { getIssue } from '../../api/firebase';
-import { Article, LANGUAGES, } from '../../models';
+import { Article } from '../../models';
 import { DonationPage } from '../../pages/DonationPage'
 import { RouteComponentProps } from 'react-router-dom';
 //import { IssuesPage } from '../../pages';
 import { IssueCoverPage } from '../../pages/IssueCoverPage';
-
+import { getStoredLang } from '../../api/language';
 
 // calculate window height based on the screen size, subtract the height of the nav bar (3 rem)
 // This places the scroll bar at the bottom of the page
@@ -84,21 +84,28 @@ export const Scrollview: FC<Props> = ({ match }) => {
     // eslint-disable-next-line
   }, [currentPage, issue])
 
-  useEffect(() => {
-    getIssue(Number(match.params.id + 1), LANGUAGES.EN, (data) => {
-      setIssue(
-        {
-          donate: { title: data.donationTitle, text: data.donationText, url: data.donationUrl },
-          date: data.title,
-          articles: data.articles,
-          headline: data.headline,
-          image: data.image,
-          imageCredit: data.imageCredit,
-        });
-      setScrollStart();
-      setDonatePage();
-    });
-    // eslint-disable-next-line
+  useEffect( () => {
+    
+    const fetchIssue = async () => {
+      const lang = await getStoredLang();
+      getIssue(Number(match.params.id + 1), lang, (data) => {
+        setIssue(
+          {
+            donate: { title: data.donationTitle, text: data.donationText, url: data.donationUrl },
+            date: data.title,
+            articles: data.articles,
+            headline: data.headline,
+            image: data.image,
+            imageCredit: data.imageCredit,
+          });
+        setScrollStart();
+        setDonatePage();
+      });
+      // eslint-disable-next-line
+    }
+
+    fetchIssue();
+
   }, []);
 
   useEffect(() => {

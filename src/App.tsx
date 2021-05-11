@@ -1,32 +1,34 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { getIssue } from './api/firebase';
 import { BaseLayout } from './layouts/BaseLayout';
 import { LANGUAGES } from './models';
 import { addFav, removeFav} from './api/favorites';
+import { LoadingScreen } from './components/SplashScreen';
+import { getStoredLang, storeLang } from './api/language';
+import { LanguageCtx } from './lang-context';
 
-  
 export const App: FC<{}> = () => {
-
-  // const [articles, setArticles] =  useState <any>();
   
-  // getArticle("HVG0cAArZe6bMj4QJPag", "bvMDfEYH7xZ3iRv5YsXr", (result) => {
-  //   console.log('fav', result);
-  // });
+  const [loading, setLoading] = useState(false)
+  const [lang, setLang] = useState(LANGUAGES.EN);
 
-  getIssue(1, LANGUAGES.DE, (data) => {
-    // console.log('get issue', data.issueId)
-    
-    addFav(data.issueId, data.articles[0].articleId, () => { console.log('added')});
-    removeFav(data.issueId, data.articles[0].articleId, () => { console.log('removed')})
+  useEffect( () => {
+      const fetchLang = async () => { 
+        setLang(await getStoredLang());
+      };
+      fetchLang();
+    // setTimeout(() => setLoading(false), 5000);
   })
-  
-  // getFavorites().then( (data) => console.log('favs', data))
-  
+
   return (
+    <LanguageCtx.Provider value={ { language: lang }}>
+
     <div>
-      {/* <FAB></FAB> */}
-      <BaseLayout />
+      { loading ? <LoadingScreen />
+                : null }
+      <BaseLayout /> 
     </div>  
+    </LanguageCtx.Provider>
   );
 }
 
