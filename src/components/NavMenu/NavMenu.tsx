@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory } from 'react-router-dom';
+import React from "react";
+import { Link } from 'react-router-dom';
 // SVG imports 
 import { ReactComponent as SqIconLogo } from '../../assets/icon/sn-logo.svg'; // Wrap the svg logo in a component container
 
-import { valFor, getStoredLang, storeLang } from '../../api/language';
+import { valFor, storeLang } from '../../api/language';
 import { LANGUAGES } from "../../models";
 import { AppContext } from "../../contexts";
 
@@ -26,7 +26,7 @@ export const NavMenu: React.FC<Props> = ({open}) => {
     window.location.href = "/"
   }
 
-  return(
+  return (
       <AppContext.Consumer>
         { ( {language} ) => (
 
