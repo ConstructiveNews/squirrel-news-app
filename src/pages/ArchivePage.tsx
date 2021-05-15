@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState  } from 'react';
 import { LANGUAGES } from '../models';
-import { IssueTeaser } from '../widgets/IssueTeaser'
+import { IssueTeaser } from '../components/IssueTeaser/IssueTeaser'
 import { getArchive} from '../api/firebase';
 
 

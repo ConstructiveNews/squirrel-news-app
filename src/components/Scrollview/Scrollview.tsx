@@ -8,6 +8,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { IssueCoverPage } from '../../pages/IssueCoverPage';
 import { getStoredLang } from '../../api/language';
 import { AppContext } from '../../contexts';
+import { MorePage } from '../../pages/MorePage';
 
 // calculate window height based on the screen size, subtract the height of the nav bar (3 rem)
 // This places the scroll bar at the bottom of the page
@@ -58,7 +59,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
   // eslint-disable-next-line
   function setPaginator(currentPage: number) {
 
-    numPages = getNumberOfPages();
+    numPages = getNumberOfPages() + 1;
     let bullets: any = []
 
     if (issue.headline !== undefined) {
@@ -93,7 +94,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
     
     const fetchIssue = async () => {
       const lang = await getStoredLang();
-      getIssue(Number(match.params.id + 1), lang, (data) => {
+      getIssue(parseInt(match.params.id) + 1, lang, (data) => {
         setIssue(
           {
             issueId: data.issueId,
@@ -200,6 +201,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
 
         <DonationPage />
 
+        <MorePage nextIssueId={parseInt(match.params.id) + 1}/>
 
       </div>
 
