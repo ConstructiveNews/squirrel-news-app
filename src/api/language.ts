@@ -6,11 +6,15 @@ const { Device, Storage } = Plugins;
 const STORAGE_KEY = 'lang';
 const LANGUAGE_VALUES: any = {
   de: {
+    archive: {
+      title: 'Alle Ausgaben'
+    },
     article: {
       more: 'Mehr...',
       photo: 'Foto'
     },
     issues: {
+      current: 'Aktuelle Ausgabe',
       all: 'Alle Ausgaben',
       previous: 'Vorherige Ausgabe',
       favorites: 'Favoriten',
@@ -58,16 +62,21 @@ const LANGUAGE_VALUES: any = {
     donate: {
       ownCase: 'in eigener Sache',
       title: 'Bitte unterstützt uns!',
-      text: 'Squirrel News finanziert sich hauptsächlich durch Spenden. Damit das klappt, brauchen wir euch alle! Bitte unterstützt uns jetzt mit einem regelmäßigen Betrag in der Höhe eurer Wahl!'
+      text: 'Squirrel News finanziert sich hauptsächlich durch Spenden. Damit das klappt, brauchen wir euch alle! Bitte unterstützt uns jetzt mit einem regelmäßigen Betrag in der Höhe eurer Wahl!',
+      link: 'https://squirrel-news.net/de/unterstuetzen/'
     }
   },
 
   en: {
+    archive: {
+      title: 'All issues'
+    },
     article: {
       more: 'More...',
       photo: 'Photo'
     },
     issues: {
+      current: 'Current Issue',
       all: 'All Issues',
       previous: 'Previous Issue',
       favorites: 'Favourites',
@@ -115,7 +124,8 @@ const LANGUAGE_VALUES: any = {
     donate: {
       ownCase: 'in own case',
       title: 'Please support us!',
-      text: 'Squirrel News is a non-profit organisation and relies on donations. Please support us now to help us continue our work and keep Squirrel News running!'
+      text: 'Squirrel News is a non-profit organisation and relies on donations. Please support us now to help us continue our work and keep Squirrel News running!',
+      link: 'https://squirrel-news.net/support-us/'
     }
   }
 };

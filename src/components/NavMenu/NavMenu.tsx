@@ -25,6 +25,10 @@ export const NavMenu: React.FC<Props> = ({open}) => {
     }
     window.location.href = "/"
   }
+  
+  const handleCurrentIssue = () => {
+    window.location.href = "/"
+  }
 
   return (
       <AppContext.Consumer>
@@ -43,6 +47,15 @@ export const NavMenu: React.FC<Props> = ({open}) => {
                   onClick={ () => { handleLanguageSwitch(language)} }
                   >
                   { valFor(language, 'lang.switch')}
+                </button>
+              </div>
+
+              <div className={style}>
+                <button 
+                  className=" background-transparent px-3 py-1 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  onClick={ () => { handleCurrentIssue()} }
+                  >
+                  { valFor(language, 'issues.current')}
                 </button>
               </div>
 

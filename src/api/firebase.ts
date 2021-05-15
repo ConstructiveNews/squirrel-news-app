@@ -19,11 +19,9 @@ export function getIssue(atIndex: number, language: LANGUAGES, onResult: (data: 
 
   firestore.collection('issues')
     .where('language', '==', language)
-    .orderBy('dateCreated', 'desc').limit(atIndex).onSnapshot(
+    .orderBy('publishedAt', 'desc').limit(atIndex).onSnapshot(
       (issue) => {
-        console.log('issues', issue.docChanges().length)
         const result: Issue = issue.docChanges()[issue.docChanges().length - 1].doc.data() as Issue;
-        console.log(result.title);
         result.issueId = issue.docChanges()[issue.docChanges().length - 1].doc.id;
         
         firestore.collection('issues').doc(result.issueId).collection('articles').onSnapshot(articles => {
