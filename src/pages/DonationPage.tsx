@@ -24,7 +24,7 @@ export const DonationPage: React.FC = () => {
     return(
         <AppContext.Consumer>
           { ({language}) => (
-            <div className="flex flex-col h-full snap-child mt-6" style={style}>
+            <div className="flex flex-col h-full snap-child mt-10" style={style}>
               {/* <div className="relative"> */}
                 <div className="_logo_container w-full h-auto" style={style}>
                     <img className=" h-48 w-48 mt-12 m-auto object-cover p-0 overflow-hidden rounded-full" src={logo} alt='donate' onClick={ () => openBrowser(valFor(language, 'donate.link'))}></img>
