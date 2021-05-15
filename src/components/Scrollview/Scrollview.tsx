@@ -8,6 +8,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { IssueCoverPage } from '../../pages/IssueCoverPage';
 import { getStoredLang } from '../../api/language';
 import { AppContext } from '../../contexts';
+import { MorePage } from '../../pages/MorePage';
 
 // calculate window height based on the screen size, subtract the height of the nav bar (3 rem)
 // This places the scroll bar at the bottom of the page
@@ -30,6 +31,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
   const [paginator, refreshPaginator] = useState<any>();
   const [issue, setIssue] = useState<
     {
+      issueId: string,
       donate: { title: string, text: string, url: string },
       date: string,
       articles: Article[],
@@ -38,6 +40,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
       imageCredit: string,
     }>
     ({
+      issueId: "",
       donate: { title: "", text: "", url: "" },
       date: "",
       articles: [],
@@ -56,7 +59,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
   // eslint-disable-next-line
   function setPaginator(currentPage: number) {
 
-    numPages = getNumberOfPages();
+    numPages = getNumberOfPages() + 1;
     let bullets: any = []
 
     if (issue.headline !== undefined) {
@@ -91,9 +94,10 @@ export const Scrollview: FC<Props> = ({ match }) => {
     
     const fetchIssue = async () => {
       const lang = await getStoredLang();
-      getIssue(Number(match.params.id + 1), lang, (data) => {
+      getIssue(parseInt(match.params.id) + 1, lang, (data) => {
         setIssue(
           {
+            issueId: data.issueId,
             donate: { title: data.donationTitle, text: data.donationText, url: data.donationUrl },
             date: data.title,
             articles: data.articles,
@@ -182,7 +186,8 @@ export const Scrollview: FC<Props> = ({ match }) => {
         <IssueCoverPage date={issue.date} headline={issue.headline} image={issue.image} imageCredit={issue.imageCredit} />
 
         {issue.articles.map((item, idx) =>
-          <ArticleTeaser key={idx} article={{
+          <ArticleTeaser key={idx} issue={ issue.issueId} article={{
+            articleId: item.articleId,
             id: item.position,
             date: issue.date,
             image: item.imageUrl,
@@ -196,6 +201,7 @@ export const Scrollview: FC<Props> = ({ match }) => {
 
         <DonationPage />
 
+        <MorePage nextIssueId={parseInt(match.params.id) + 1}/>
 
       </div>
 

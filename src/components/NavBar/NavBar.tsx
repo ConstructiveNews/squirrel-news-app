@@ -1,14 +1,9 @@
-import React, { CSSProperties, useState } from "react";
+import React, { useState } from "react";
 import {NavMenu} from "../NavMenu/NavMenu";
 
 // SVG imports 
 import { ReactComponent as Logo } from '../../assets/icon/sn-logo-name.svg'; 
 import { ReactComponent as BurgerMenu } from '../../assets/icon/burger-menu.svg';
-//import { ReactComponent as HeartFull } from '../../assets/icon/heart.svg';
-import { ReactComponent as HeartEmpty } from '../../assets/icon/heart-empty.svg';
-import { ReactComponent as PaperPlane } from '../../assets/icon/paper-plane.svg';
-
-var menu = false;
 
 interface Props{
     // Prop declariation in the interface

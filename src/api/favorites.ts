@@ -9,10 +9,8 @@ export async function getFavorites(): Promise<StoredFav[]> {
 }
 
 /** sets StoredFavorites as a string value to the platform`s Storage system */
-function setFavorites(favorites: StoredFav[], onResult: () => void ) {
-  Storage.set({ key: 'favorites', value: JSON.stringify(favorites)})
-    .then( () => onResult)
-    .catch(reject => reject );
+async function setFavorites(favorites: StoredFav[] ) {
+  return Storage.set({ key: 'favorites', value: JSON.stringify(favorites)})
 }
 
 /**  */
@@ -23,13 +21,13 @@ export const isFav = async (issueId: string, articleId: string): Promise<boolean
   return result.length === 1;
 }
 
-export const addFav = async (issueId: string, articleId: string, onResult: () => void) => {
+export const addFav = async (issueId: string, articleId: string) => {
   const result = (await getFavorites());
   result.push({ issueId, articleId });
-  setFavorites(result, onResult);
+  setFavorites(result);
 }
 
-export const removeFav = async (issueId: string, articleId: string, onResult: () => void) => {
+export const removeFav = async (issueId: string, articleId: string) => {
   const result = (await getFavorites()).filter( item => item.issueId !== issueId && item.articleId !== articleId);
-  setFavorites(result, onResult);
+  setFavorites(result);
 }

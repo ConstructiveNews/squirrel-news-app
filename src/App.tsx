@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { BaseLayout } from './layouts/BaseLayout';
 import { LANGUAGES } from './models';
 import { SplashScreen } from './components/SplashScreen';
-import { getStoredLang, storeLang } from './api/language';
+import { getStoredLang } from './api/language';
 import { AppContext } from './contexts';
 
 export const App: FC<{}> = () => {

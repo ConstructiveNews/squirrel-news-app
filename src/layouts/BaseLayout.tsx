@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'; 
 import { NavBar } from '../components/NavBar/NavBar';
 import { Scrollview } from '../components/Scrollview/Scrollview'

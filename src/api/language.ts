@@ -146,7 +146,7 @@ export async function storeLang(code: LANGUAGES): Promise<any> {
 
 export function valFor(lang: string, key: string): string {
   const split = key.split('.');
-  if (split.length == 1) {
+  if (split.length === 1) {
     return LANGUAGE_VALUES[lang][key];
   }
   else {

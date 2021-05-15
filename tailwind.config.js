@@ -19,6 +19,9 @@ module.exports = {
         "screen/5": "calc(100vh / 5)",
         "half": "50%",
       }),
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+      }
     },
   },
   variants: {},
