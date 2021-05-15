@@ -92,16 +92,16 @@ export const ArticleTeaser: React.FC<Props> = ({ issue, article }) => {
   return (
     <div className="flex flex-col-reverse h-full snap-child" style={style} >
       <div className="_article_info h-auto  mb-4 p-0" style={style}>
-        <div className="_article_headline text-lg font-medium ml-3 mt-2 ">{article.headline}</div>
-        <div className="_article_provider ml-3 my-2">{article.provider}</div>
-        <div className="_article_description text-sm ml-3">{article.description}</div>
+        <div className="_article_headline text-lg font-medium mx-3 mt-2 ">{article.headline}</div>
+        <div className="_article_provider mx-3 my-2">{article.provider}</div>
+        <div className="_article_description text-sm px-3">{article.description}</div>
       </div>
 
       <div className="flex flex-row w-1/3 p-2">
         <button onClick={handleLike} className="mx-2">
           {liked
             ? <IoHeart className="m-auto" />
-            : <IoHeartOutline className="m-auto" />
+            : <IoHeartOutline className="w-full m-auto" />
           }
         </button>
         <button onClick={handleShare} className="mx-2">
